@@ -15,7 +15,7 @@ class SoftPlay {
   }
 
   enter(numAdults, numChildren, maxOccupancy, childrenPerAdult) {
-    const peopleInside = (numAdults + numChildren <= maxOccupancy || this.maxOccupancy === undefined);
+    const peopleInside = (numAdults + numChildren <= maxOccupancy || maxOccupancy === undefined);
     const enteringParty = (numChildren <= numAdults * childrenPerAdult || childrenPerAdult === undefined);
     if (numChildren <= numAdults && peopleInside && enteringParty) {
       this.adults += numAdults;
