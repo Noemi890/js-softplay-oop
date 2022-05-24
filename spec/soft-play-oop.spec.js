@@ -53,4 +53,24 @@ describe("Soft Play OOP", () => {
     expect(softPlay.leave(2,1)).toBeTrue()
     expect(softPlay.occupancy()).toEqual({adults: 0, children: 0})
   })
+  
+  //Added spec
+
+  it("Max Occupancy reached", function(){
+    let softPlay = new SoftPlay()
+    softPlay.enter(5, 10, 10)
+    expect(softPlay.enter(5, 10, 10)).toBeFalse()
+  })
+
+  it("Max Occupancy not reached", function(){
+    let softPlay = new SoftPlay()
+    softPlay.enter(10, 5, 20)
+    expect(softPlay.enter(10, 5, 20)).toBeTrue()
+  })
+
+  it("Too many children", function() {
+    let softPlay = new SoftPlay()
+    softPlay.enter(2, 8, undefined, 3)
+    expect(softPlay.enter(2, 8, undefined, 3)).toBeFalse()
+  })
 })
