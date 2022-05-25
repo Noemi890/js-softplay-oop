@@ -57,20 +57,26 @@ describe("Soft Play OOP", () => {
   //Added spec
 
   it("Max Occupancy reached", function(){
-    let softPlay = new SoftPlay()
-    softPlay.enter(5, 10, 10)
-    expect(softPlay.enter(5, 10, 10)).toBeFalse()
+    let softPlay = new SoftPlay(0, 0, 10)
+    softPlay.enter(5, 10)
+    expect(softPlay.enter(5, 10)).toBeFalse()
   })
 
   it("Max Occupancy not reached", function(){
-    let softPlay = new SoftPlay()
-    softPlay.enter(10, 5, 20)
-    expect(softPlay.enter(10, 5, 20)).toBeTrue()
+    let softPlay = new SoftPlay(0, 0, 20)
+    softPlay.enter(10, 5)
+    expect(softPlay.enter(10, 5)).toBeTrue()
   })
 
   it("Too many children", function() {
+    let softPlay = new SoftPlay(0, 0, undefined, 3)
+    softPlay.enter(2, 8)
+    expect(softPlay.enter(2, 8)).toBeFalse()
+  })
+
+  it("Childrens per adult are ok", () => {
     let softPlay = new SoftPlay()
-    softPlay.enter(2, 8, undefined, 3)
-    expect(softPlay.enter(2, 8, undefined, 3)).toBeFalse()
+    softPlay.enter(2, 2)
+    expect(softPlay.enter(2, 2)).toBeTrue()
   })
 })
